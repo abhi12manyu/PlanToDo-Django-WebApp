@@ -3,27 +3,25 @@
 {% load socialaccount %}
 
 <div class="header-bar">
-    <h1>Plan your day with Plan-To-Do</h1>
+    <h1>Plan-To-Do</h1>
 </div>
 
-<div class="login-bar">
-    <h3>Login</h3>
-</div>
+
 
 <div class="card-body">
+    <h3>Login</h3>
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
         <input class="button" type="submit" value="Login">
     </form>
     <br>
-    <div>
-        {% if user.is_authenticated %}
-        <p> Welcome, {{ user.username }} </p>
-        {% else %}
-        <a href="{% provider_login_url 'google' %}">Sign in with Google</a>
-        {% endif %}
-    <div/>
+    <div class="google-btn">
+        <div class="google-icon-wrapper">
+          <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+        </div>
+        <p class="btn-text"> <a href="{% provider_login_url 'google' %}">Sign-in with Google</a></p>
+      </div>
     <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
 </div>
 
